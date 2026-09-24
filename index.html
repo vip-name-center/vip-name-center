@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title id="siteTitleNav">VIP Style Name Center</title>
+    
+    <!-- App Manifest for Golden Logo Web App -->
+    <link rel="manifest" id="manifestLink">
+    <meta name="theme-color" content="#0d0e15">
+
+    <style>
+        /* Base & Disable Zooming */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #090a0f;
+            background-image: radial-gradient(circle at 50% 10%, #1a1c29 0%, #08090d 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 30px;
+            overflow-x: hidden;
+        }
+
+        /* Header Area */
+        header {
+            width: 100%;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .logo-box img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            object-fit: cover;
+        }
+
+        .site-title {
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Search Bar */
+        .search-box {
+            width: 90%;
+            max-width: 450px;
+            margin: 15px 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            background: rgba(20, 22, 35, 0.8);
+            color: #ffd700;
+            outline: none;
+            font-size: 15px;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 0 10px rgba(255, 215, 0, 0.1);
+        }
+
+        /* Social Media Cards Navigation */
+        .social-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            width: 90%;
+            max-width: 450px;
+            justify-content: space-between;
+        }
+
+        .social-card {
+            flex: 1;
+            padding: 10px 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .social-card:active {
+            transform: scale(0.95);
+        }
+
+        .social-card.tiktok { border-color: #ff0050; color: #ff0050; }
+        .social-card.telegram { border-color: #0088cc; color: #0088cc; }
+        .social-card.youtube { border-color: #ff0000; color: #ff0000; }
+        .social-card.facebook { border-color: #1877f2; color: #1877f2; }
+
+        /* Name Generator Section */
+        .generator-box {
+            width: 90%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.1);
+        }
+
+        .generator-box h3 {
+            font-size: 14px;
+            color: #00ffcc;
+            margin-bottom: 10px;
+        }
+
+        .generator-box input {
+            width: 70%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #00ffcc;
+            background: #111;
+            color: #fff;
+            outline: none;
+        }
+
+        .generator-box button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #00ffcc, #0088cc);
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* 2 Column Water-proof 3D Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 92%;
+            max-width: 450px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 15px 10px;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                        inset 0 0 10px rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            pointer-events: none;
+        }
+
+        .card:active {
+            transform: scale(0.96) translateY(2px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .card-name {
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            word-break: break-all;
+        }
+
+        /* Toast Popup */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            display: none;
+            z-index: 200;
+        }
+
+        /* Admin Modal */
+        .admin-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 300;
+        }
+
+        .admin-box {
+            background: #151824;
+            border: 2px solid #ffd700;
+            width: 85%;
+            max-width: 380px;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .admin-box h2 {
+            text-align: center;
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .admin-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255,215,0,0.3);
+            background: #0d0e15;
+            color: #fff;
+            outline: none;
+            font-size: 12px;
+        }
+
+        .admin-box button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #ffd700;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-box" onclick="handleTitleClick()">
+            <img id="siteLogo" src="https://via.placeholder.com/100/ffd700/000000?text=VIP" alt="Logo">
+            <span id="siteTitle" class="site-title">ᴹᴿ〲ʟᴀʟᴀ²⁸</span>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="নাম বা নম্বর লিখে সার্চ করুন (যেমন: 15)..." onkeyup="filterNames()">
+    </div>
+
+    <!-- Social Media Cards Nav -->
+    <div class="social-nav">
+        <a id="linkTiktok" href="#" target="_blank" class="social-card tiktok">TikTok</a>
+        <a id="linkTelegram" href="#" target="_blank" class="social-card telegram">Telegram</a>
+        <a id="linkYoutube" href="#" target="_blank" class="social-card youtube">YouTube</a>
+        <a id="linkFacebook" href="#" target="_blank" class="social-card facebook">Facebook</a>
+    </div>
+
+    <!-- Custom Style Generator -->
+    <div class="generator-box">
+        <h3>নিজের নাম স্টাইল করুন</h3>
+        <input type="text" id="customInput" placeholder="ex: miss Mim10">
+        <button onclick="generateCustomName()">মেক</button>
+    </div>
+
+    <!-- 2-Column Name Grid -->
+    <div class="grid-container" id="nameGrid"></div>
+
+    <!-- Copy Toast -->
+    <div id="toast" class="toast">নাম কপি করা হয়েছে!</div>
+
+    <!-- VIP Admin Panel Modal -->
+    <div id="adminModal" class="admin-modal">
+        <div class="admin-box">
+            <h2>VIP Admin Panel</h2>
+            <div id="loginForm">
+                <input type="password" id="adminPass" placeholder="পাসওয়ার্ড লিখুন">
+                <button onclick="checkAdminPass()">Login</button>
+            </div>
+            <div id="controlForm" style="display: none;">
+                <input type="text" id="editTitle" placeholder="ওয়েবসাইট টাইটেল">
+                <input type="text" id="editLogo" placeholder="গোল্ড লোগো Image URL">
+                <input type="text" id="editTikTok" placeholder="TikTok Link">
+                <input type="text" id="editTelegram" placeholder="Telegram Link">
+                <input type="text" id="editYouTube" placeholder="YouTube Link">
+                <input type="text" id="editFacebook" placeholder="Facebook Link">
+                <button onclick="saveAdminData()">Save & Update</button>
+                <button onclick="closeAdmin()" style="background: #ff4757; color: #fff;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Names Data -->
+    <script src="names.js"></script>
+
+    <script>
+        // Load Settings from LocalStorage or Default
+        let settings = JSON.parse(localStorage.getItem('vip_site_settings')) || {
+            title: "ᴹᴿ〲ʟᴀʟᴀ²⁸",
+            logo: "https://via.placeholder.com/100/ffd700/000000?text=VIP",
+            tiktok: "https://tiktok.com",
+            telegram: "https://t.me",
+            youtube: "https://youtube.com",
+            facebook: "https://facebook.com"
+        };
+
+        function applySettings() {
+            document.getElementById('siteTitle').innerText = settings.title;
+            document.getElementById('siteTitleNav').innerText = settings.title;
+            document.getElementById('siteLogo').src = settings.logo;
+            document.getElementById('linkTiktok').href = settings.tiktok;
+            document.getElementById('linkTelegram').href = settings.telegram;
+            document.getElementById('linkYoutube').href = settings.youtube;
+            document.getElementById('linkFacebook').href = settings.facebook;
+            
+            // Dynamic Web Manifest for Icon Home Screen
+            const manifest = {
+                "name": settings.title,
+                "short_name": "VIP App",
+                "start_url": "./",
+                "display": "standalone",
+                "background_color": "#0d0e15",
+                "theme_color": "#0d0e15",
+                "icons": [{ "src": settings.logo, "sizes": "512x512", "type": "image/png" }]
+            };
+            const stringManifest = JSON.stringify(manifest);
+            const blob = new Blob([stringManifest], {type: 'application/json'});
+            document.getElementById('manifestLink').setAttribute('href', URL.createObjectURL(blob));
+        }
+
+        // Render Cards with Random Neon Colors
+        const colors = ['#00ffcc', '#ff007f', '#ffd700', '#00bfff', '#ff8c00', '#7b68ee', '#00ff7f'];
+
+        function renderGrid(dataList) {
+            const grid = document.getElementById('nameGrid');
+            grid.innerHTML = '';
+            dataList.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                card.innerHTML = `<div class="card-name" style="color: ${randomColor}; text-shadow: 0 0 8px ${randomColor}66">${item}</div>`;
+                card.onclick = () => copyText(item);
+                grid.appendChild(card);
+            });
+        }
+
+        // Copy Text
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 1500);
+        }
+
+        // Search Filter
+        function filterNames() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const filtered = nameList.filter(name => name.toLowerCase().includes(query));
+            renderGrid(filtered);
+        }
+
+        // Custom VIP Font Converter Engine
+        function convertToVipFont(text) {
+            const map = {
+                'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ꜰ','g':'ɢ','h':'ʜ','i':'ɪ',
+                'j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'Q','r':'ʀ',
+                's':'s','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ',
+                '0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'
+            };
+            
+            let parts = text.trim().split(" ");
+            if (parts.length < 2) return text;
+
+            let firstName = parts[0].toLowerCase().split('').map(c => map[c] || c).join('');
+            let lastName = parts.slice(1).join('').toLowerCase().split('').map(c => map[c] || c).join('');
+
+            return `${firstName.toUpperCase()}〲${lastName}`;
+        }
+
+        function generateCustomName() {
+            const input = document.getElementById('customInput').value;
+            if(!input) return;
+            const vipName = convertToVipFont(input);
+            copyText(vipName);
+            alert('আপনার VIP নাম তৈরি ও কপি করা হয়েছে:\n' + vipName);
+        }
+
+        // Secret 4-Click Admin Panel Activation
+        let clickCount = 0;
+        let clickTimer;
+        function handleTitleClick() {
+            clickCount++;
+            clearTimeout(clickTimer);
+            if (clickCount === 4) {
+                document.getElementById('adminModal').style.display = 'flex';
+                clickCount = 0;
+            }
+            clickTimer = setTimeout(() => { clickCount = 0; }, 1200);
+        }
+
+        function checkAdminPass() {
+            const pass = document.getElementById('adminPass').value;
+            if (pass === 'lala') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('controlForm').style.display = 'block';
+                
+                document.getElementById('editTitle').value = settings.title;
+                document.getElementById('editLogo').value = settings.logo;
+                document.getElementById('editTikTok').value = settings.tiktok;
+                document.getElementById('editTelegram').value = settings.telegram;
+                document.getElementById('editYouTube').value = settings.youtube;
+                document.getElementById('editFacebook').value = settings.facebook;
+            } else {
+                alert('ভুল পাসওয়ার্ড!');
+            }
+        }
+
+        function saveAdminData() {
+            settings.title = document.getElementById('editTitle').value;
+            settings.logo = document.getElementById('editLogo').value;
+            settings.tiktok = document.getElementById('editTikTok').value;
+            settings.telegram = document.getElementById('editTelegram').value;
+            settings.youtube = document.getElementById('editYouTube').value;
+            settings.facebook = document.getElementById('editFacebook').value;
+
+            localStorage.setItem('vip_site_settings', JSON.stringify(settings));
+            applySettings();
+            closeAdmin();
+            alert('সফলভাবে আপডেট করা হয়েছে!');
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminModal').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('controlForm').style.display = 'none';
+            document.getElementById('adminPass').value = '';
+        }
+
+        // Initial Load
+        window.onload = () => {
+            applySettings();
+            renderGrid(nameList);
+        };
+    </script>
+</body>
+</html>
