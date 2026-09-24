@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title id="siteTitleNav">VIP Style Name Center</title>
     
-    <!-- App Manifest for Golden Logo Web App -->
-    <link rel="manifest" id="manifestLink">
+    <!-- PWA Web App Icons & Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" id="favicon" href="logo.png">
+    <link rel="apple-touch-icon" id="appleIcon" href="logo.png">
     <meta name="theme-color" content="#0d0e15">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <style>
-        /* Base & Disable Zooming */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -18,12 +21,11 @@
             user-select: none;
             -webkit-user-select: none;
             touch-action: manipulation;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background: #090a0f;
-            background-image: radial-gradient(circle at 50% 10%, #1a1c29 0%, #08090d 100%);
+            background: #08090c;
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -31,18 +33,17 @@
             align-items: center;
             padding-bottom: 30px;
             overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* Header Area */
         header {
             width: 100%;
-            padding: 15px 20px;
+            padding: 12px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            background: #11131c;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -51,75 +52,63 @@
         .logo-box {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             cursor: pointer;
         }
 
         .logo-box img {
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             border: 2px solid #ffd700;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
             object-fit: cover;
         }
 
         .site-title {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: bold;
-            background: linear-gradient(45deg, #ffd700, #ff8c00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
         }
 
-        /* Search Bar */
+        /* Fast Performance Search Box */
         .search-box {
             width: 90%;
-            max-width: 450px;
-            margin: 15px 0;
+            max-width: 420px;
+            margin: 12px 0;
         }
 
         .search-box input {
             width: 100%;
-            padding: 12px 20px;
-            border-radius: 25px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            background: rgba(20, 22, 35, 0.8);
+            padding: 12px 18px;
+            border-radius: 20px;
+            border: 1px solid #ffd700;
+            background: #12141f;
             color: #ffd700;
             outline: none;
-            font-size: 15px;
+            font-size: 14px;
             text-align: center;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 0 10px rgba(255, 215, 0, 0.1);
         }
 
-        /* Social Media Cards Navigation */
         .social-nav {
             display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 8px;
+            margin-bottom: 12px;
             width: 90%;
-            max-width: 450px;
-            justify-content: space-between;
+            max-width: 420px;
         }
 
         .social-card {
             flex: 1;
-            padding: 10px 5px;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 4px;
+            background: #141724;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            border-radius: 10px;
             text-align: center;
-            font-size: 12px;
+            font-size: 11px;
             color: #fff;
             text-decoration: none;
-            backdrop-filter: blur(5px);
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .social-card:active {
-            transform: scale(0.95);
+            font-weight: bold;
         }
 
         .social-card.tiktok { border-color: #ff0050; color: #ff0050; }
@@ -127,113 +116,93 @@
         .social-card.youtube { border-color: #ff0000; color: #ff0000; }
         .social-card.facebook { border-color: #1877f2; color: #1877f2; }
 
-        /* Name Generator Section */
         .generator-box {
             width: 90%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 255, 204, 0.3);
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 20px;
+            max-width: 420px;
+            background: #12141f;
+            border: 1px solid #00ffcc;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.1);
         }
 
         .generator-box h3 {
-            font-size: 14px;
+            font-size: 13px;
             color: #00ffcc;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .generator-box input {
-            width: 70%;
-            padding: 8px 12px;
-            border-radius: 8px;
+            width: 65%;
+            padding: 8px 10px;
+            border-radius: 6px;
             border: 1px solid #00ffcc;
-            background: #111;
+            background: #000;
             color: #fff;
             outline: none;
+            font-size: 12px;
         }
 
         .generator-box button {
-            padding: 8px 15px;
+            padding: 8px 12px;
             border: none;
-            border-radius: 8px;
-            background: linear-gradient(45deg, #00ffcc, #0088cc);
+            border-radius: 6px;
+            background: #00ffcc;
             color: #000;
             font-weight: bold;
-            cursor: pointer;
+            font-size: 12px;
         }
 
-        /* 2 Column Water-proof 3D Cards */
+        /* Optimized Smooth Scroll Grid */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 10px;
             width: 92%;
-            max-width: 450px;
+            max-width: 420px;
+            will-change: transform;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 15px 10px;
+            background: #11131d;
+            border-radius: 12px;
+            padding: 14px 8px;
             text-align: center;
-            position: relative;
-            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
-                        inset 0 0 10px rgba(255, 255, 255, 0.05);
-            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             cursor: pointer;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg);
-            pointer-events: none;
+            transform: translateZ(0); /* Hardware Acceleration */
         }
 
         .card:active {
-            transform: scale(0.96) translateY(2px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            background: #1c2030;
+            transform: scale(0.97);
         }
 
         .card-name {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
-            letter-spacing: 0.5px;
             word-break: break-all;
         }
 
-        /* Toast Popup */
         .toast {
             position: fixed;
-            bottom: 30px;
-            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            bottom: 25px;
+            background: #ffd700;
             color: #000;
-            padding: 10px 25px;
+            padding: 8px 20px;
             border-radius: 20px;
             font-weight: bold;
-            font-size: 13px;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            font-size: 12px;
             display: none;
             z-index: 200;
         }
 
-        /* Admin Modal */
         .admin-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.92);
             display: none;
             justify-content: center;
             align-items: center;
@@ -241,63 +210,57 @@
         }
 
         .admin-box {
-            background: #151824;
+            background: #141724;
             border: 2px solid #ffd700;
             width: 85%;
-            max-width: 380px;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            max-width: 350px;
+            border-radius: 12px;
+            padding: 18px;
         }
 
         .admin-box h2 {
             text-align: center;
             color: #ffd700;
-            margin-bottom: 15px;
-            font-size: 18px;
+            margin-bottom: 12px;
+            font-size: 16px;
         }
 
         .admin-box input {
             width: 100%;
-            padding: 10px;
-            margin: 6px 0;
-            border-radius: 8px;
-            border: 1px solid rgba(255,215,0,0.3);
-            background: #0d0e15;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 6px;
+            border: 1px solid #ffd700;
+            background: #08090c;
             color: #fff;
-            outline: none;
             font-size: 12px;
         }
 
         .admin-box button {
             width: 100%;
-            padding: 10px;
-            margin-top: 10px;
+            padding: 9px;
+            margin-top: 8px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             background: #ffd700;
             color: #000;
             font-weight: bold;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <div class="logo-box" onclick="handleTitleClick()">
-            <img id="siteLogo" src="https://via.placeholder.com/100/ffd700/000000?text=VIP" alt="Logo">
+            <img id="siteLogo" src="logo.png" alt="Logo">
             <span id="siteTitle" class="site-title">ᴹᴿ〲ʟᴀʟᴀ²⁸</span>
         </div>
     </header>
 
-    <!-- Search Bar -->
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="নাম বা নম্বর লিখে সার্চ করুন (যেমন: 15)..." onkeyup="filterNames()">
+        <input type="text" id="searchInput" placeholder="নাম্বার (যেমন: 15) বা নাম লিখে সার্চ করুন..." oninput="filterNames()">
     </div>
 
-    <!-- Social Media Cards Nav -->
     <div class="social-nav">
         <a id="linkTiktok" href="#" target="_blank" class="social-card tiktok">TikTok</a>
         <a id="linkTelegram" href="#" target="_blank" class="social-card telegram">Telegram</a>
@@ -305,20 +268,16 @@
         <a id="linkFacebook" href="#" target="_blank" class="social-card facebook">Facebook</a>
     </div>
 
-    <!-- Custom Style Generator -->
     <div class="generator-box">
         <h3>নিজের নাম স্টাইল করুন</h3>
         <input type="text" id="customInput" placeholder="ex: miss Mim10">
         <button onclick="generateCustomName()">মেক</button>
     </div>
 
-    <!-- 2-Column Name Grid -->
     <div class="grid-container" id="nameGrid"></div>
 
-    <!-- Copy Toast -->
-    <div id="toast" class="toast">নাম কপি করা হয়েছে!</div>
+    <div id="toast" class="toast">কপি করা হয়েছে!</div>
 
-    <!-- VIP Admin Panel Modal -->
     <div id="adminModal" class="admin-modal">
         <div class="admin-box">
             <h2>VIP Admin Panel</h2>
@@ -327,8 +286,8 @@
                 <button onclick="checkAdminPass()">Login</button>
             </div>
             <div id="controlForm" style="display: none;">
-                <input type="text" id="editTitle" placeholder="ওয়েবসাইট টাইটেল">
-                <input type="text" id="editLogo" placeholder="গোল্ড লোগো Image URL">
+                <input type="text" id="editTitle" placeholder="ওয়েবসাইট টাইটেল">
+                <input type="text" id="editLogo" placeholder="লোগো Image URL (Direct Link)">
                 <input type="text" id="editTikTok" placeholder="TikTok Link">
                 <input type="text" id="editTelegram" placeholder="Telegram Link">
                 <input type="text" id="editYouTube" placeholder="YouTube Link">
@@ -339,14 +298,12 @@
         </div>
     </div>
 
-    <!-- Include Names Data -->
     <script src="names.js"></script>
 
     <script>
-        // Load Settings from LocalStorage or Default
         let settings = JSON.parse(localStorage.getItem('vip_site_settings')) || {
             title: "ᴹᴿ〲ʟᴀʟᴀ²⁸",
-            logo: "https://via.placeholder.com/100/ffd700/000000?text=VIP",
+            logo: "https://i.ibb.co/L5342S0/gold-logo.png", // ডিফল্ট গোল্ড লোগো ইউআরএল
             tiktok: "https://tiktok.com",
             telegram: "https://t.me",
             youtube: "https://youtube.com",
@@ -357,58 +314,57 @@
             document.getElementById('siteTitle').innerText = settings.title;
             document.getElementById('siteTitleNav').innerText = settings.title;
             document.getElementById('siteLogo').src = settings.logo;
+            document.getElementById('favicon').href = settings.logo;
+            document.getElementById('appleIcon').href = settings.logo;
             document.getElementById('linkTiktok').href = settings.tiktok;
             document.getElementById('linkTelegram').href = settings.telegram;
             document.getElementById('linkYoutube').href = settings.youtube;
             document.getElementById('linkFacebook').href = settings.facebook;
-            
-            // Dynamic Web Manifest for Icon Home Screen
-            const manifest = {
-                "name": settings.title,
-                "short_name": "VIP App",
-                "start_url": "./",
-                "display": "standalone",
-                "background_color": "#0d0e15",
-                "theme_color": "#0d0e15",
-                "icons": [{ "src": settings.logo, "sizes": "512x512", "type": "image/png" }]
-            };
-            const stringManifest = JSON.stringify(manifest);
-            const blob = new Blob([stringManifest], {type: 'application/json'});
-            document.getElementById('manifestLink').setAttribute('href', URL.createObjectURL(blob));
         }
 
-        // Render Cards with Random Neon Colors
-        const colors = ['#00ffcc', '#ff007f', '#ffd700', '#00bfff', '#ff8c00', '#7b68ee', '#00ff7f'];
+        const colors = ['#00ffcc', '#ff007f', '#ffd700', '#00bfff', '#ff8c00', '#00ff7f'];
 
         function renderGrid(dataList) {
             const grid = document.getElementById('nameGrid');
             grid.innerHTML = '';
+            
+            // Render visible cards smoothly
+            const fragment = document.createDocumentFragment();
             dataList.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                card.innerHTML = `<div class="card-name" style="color: ${randomColor}; text-shadow: 0 0 8px ${randomColor}66">${item}</div>`;
-                card.onclick = () => copyText(item);
-                grid.appendChild(card);
+                const randomColor = colors[item.id % colors.length];
+                card.innerHTML = `<div class="card-name" style="color: ${randomColor}">${item.text}</div>`;
+                card.onclick = () => copyText(item.text);
+                fragment.appendChild(card);
             });
+            grid.appendChild(fragment);
         }
 
-        // Copy Text
         function copyText(text) {
             navigator.clipboard.writeText(text);
             const toast = document.getElementById('toast');
             toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 1500);
+            setTimeout(() => { toast.style.display = 'none'; }, 1200);
         }
 
-        // Search Filter
+        // Accurate Instant Search Logic
         function filterNames() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const filtered = nameList.filter(name => name.toLowerCase().includes(query));
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            if(!query) {
+                renderGrid(nameList);
+                return;
+            }
+
+            const filtered = nameList.filter(item => {
+                const isIdMatch = item.id.toString() === query;
+                const isTextMatch = item.text.toLowerCase().includes(query);
+                return isIdMatch || isTextMatch;
+            });
+
             renderGrid(filtered);
         }
 
-        // Custom VIP Font Converter Engine
         function convertToVipFont(text) {
             const map = {
                 'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ꜰ','g':'ɢ','h':'ʜ','i':'ɪ',
@@ -431,10 +387,9 @@
             if(!input) return;
             const vipName = convertToVipFont(input);
             copyText(vipName);
-            alert('আপনার VIP নাম তৈরি ও কপি করা হয়েছে:\n' + vipName);
+            alert('আপনার VIP নাম তৈরি ও কপি করা হয়েছে:\n' + vipName);
         }
 
-        // Secret 4-Click Admin Panel Activation
         let clickCount = 0;
         let clickTimer;
         function handleTitleClick() {
@@ -444,7 +399,7 @@
                 document.getElementById('adminModal').style.display = 'flex';
                 clickCount = 0;
             }
-            clickTimer = setTimeout(() => { clickCount = 0; }, 1200);
+            clickTimer = setTimeout(() => { clickCount = 0; }, 1000);
         }
 
         function checkAdminPass() {
@@ -460,7 +415,7 @@
                 document.getElementById('editYouTube').value = settings.youtube;
                 document.getElementById('editFacebook').value = settings.facebook;
             } else {
-                alert('ভুল পাসওয়ার্ড!');
+                alert('ভুল পাসওয়ার্ড!');
             }
         }
 
@@ -485,7 +440,6 @@
             document.getElementById('adminPass').value = '';
         }
 
-        // Initial Load
         window.onload = () => {
             applySettings();
             renderGrid(nameList);
