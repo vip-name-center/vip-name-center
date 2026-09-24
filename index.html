@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title id="siteTitleNav">VIP Style Name Center</title>
+    <title id="siteTitleNav">VIP Name Center</title>
     
-    <!-- PWA Web App Icons & Manifest -->
+    <!-- PWA App Icons & Manifest -->
     <link rel="manifest" href="manifest.json">
     <link rel="icon" id="favicon" href="logo.png">
     <link rel="apple-touch-icon" id="appleIcon" href="logo.png">
-    <meta name="theme-color" content="#0d0e15">
+    <meta name="theme-color" content="#08090c">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -33,7 +33,6 @@
             align-items: center;
             padding-bottom: 30px;
             overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
         }
 
         header {
@@ -43,7 +42,7 @@
             align-items: center;
             justify-content: space-between;
             background: #11131c;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.4);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -62,20 +61,21 @@
             border-radius: 50%;
             border: 2px solid #ffd700;
             object-fit: cover;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
         }
 
         .site-title {
             font-size: 17px;
             font-weight: bold;
             color: #ffd700;
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+            text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
         }
 
-        /* Fast Performance Search Box */
+        /* VIP Search Box */
         .search-box {
             width: 90%;
             max-width: 420px;
-            margin: 12px 0;
+            margin: 14px 0;
         }
 
         .search-box input {
@@ -88,6 +88,7 @@
             outline: none;
             font-size: 14px;
             text-align: center;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.8), 0 0 8px rgba(255, 215, 0, 0.2);
         }
 
         .social-nav {
@@ -102,7 +103,7 @@
             flex: 1;
             padding: 8px 4px;
             background: #141724;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 10px;
             text-align: center;
             font-size: 11px;
@@ -125,6 +126,7 @@
             padding: 12px;
             margin-bottom: 15px;
             text-align: center;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.15);
         }
 
         .generator-box h3 {
@@ -145,23 +147,23 @@
         }
 
         .generator-box button {
-            padding: 8px 12px;
+            padding: 8px 14px;
             border: none;
             border-radius: 6px;
             background: #00ffcc;
             color: #000;
             font-weight: bold;
             font-size: 12px;
+            cursor: pointer;
         }
 
-        /* Optimized Smooth Scroll Grid */
+        /* Dynamic Glowing Colors Card Grid */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
             width: 92%;
             max-width: 420px;
-            will-change: transform;
         }
 
         .card {
@@ -170,18 +172,18 @@
             padding: 14px 8px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.6);
             cursor: pointer;
-            transform: translateZ(0); /* Hardware Acceleration */
+            transition: transform 0.1s;
         }
 
         .card:active {
             background: #1c2030;
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
 
         .card-name {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
             word-break: break-all;
         }
@@ -197,6 +199,7 @@
             font-size: 12px;
             display: none;
             z-index: 200;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
         }
 
         .admin-modal {
@@ -245,6 +248,7 @@
             background: #ffd700;
             color: #000;
             font-weight: bold;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -287,7 +291,7 @@
             </div>
             <div id="controlForm" style="display: none;">
                 <input type="text" id="editTitle" placeholder="ওয়েবসাইট টাইটেল">
-                <input type="text" id="editLogo" placeholder="লোগো Image URL (Direct Link)">
+                <input type="text" id="editLogo" placeholder="লোগো Image URL">
                 <input type="text" id="editTikTok" placeholder="TikTok Link">
                 <input type="text" id="editTelegram" placeholder="Telegram Link">
                 <input type="text" id="editYouTube" placeholder="YouTube Link">
@@ -303,7 +307,7 @@
     <script>
         let settings = JSON.parse(localStorage.getItem('vip_site_settings')) || {
             title: "ᴹᴿ〲ʟᴀʟᴀ²⁸",
-            logo: "https://i.ibb.co/L5342S0/gold-logo.png", // ডিফল্ট গোল্ড লোগো ইউআরএল
+            logo: "logo.png",
             tiktok: "https://tiktok.com",
             telegram: "https://t.me",
             youtube: "https://youtube.com",
@@ -322,20 +326,21 @@
             document.getElementById('linkFacebook').href = settings.facebook;
         }
 
-        const colors = ['#00ffcc', '#ff007f', '#ffd700', '#00bfff', '#ff8c00', '#00ff7f'];
+        // Multiple VIP Neon Colors Array
+        const colors = ['#00ffcc', '#ff007f', '#ffd700', '#00bfff', '#ff8c00', '#00ff7f', '#e056fd', '#ffbe76'];
 
         function renderGrid(dataList) {
             const grid = document.getElementById('nameGrid');
             grid.innerHTML = '';
             
-            // Render visible cards smoothly
             const fragment = document.createDocumentFragment();
-            dataList.forEach(item => {
+            dataList.forEach((nameText, index) => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                const randomColor = colors[item.id % colors.length];
-                card.innerHTML = `<div class="card-name" style="color: ${randomColor}">${item.text}</div>`;
-                card.onclick = () => copyText(item.text);
+                // Pick colorful glowing color
+                const color = colors[index % colors.length];
+                card.innerHTML = `<div class="card-name" style="color: ${color}; text-shadow: 0 0 6px ${color}88">${nameText}</div>`;
+                card.onclick = () => copyText(nameText);
                 fragment.appendChild(card);
             });
             grid.appendChild(fragment);
@@ -348,7 +353,7 @@
             setTimeout(() => { toast.style.display = 'none'; }, 1200);
         }
 
-        // Accurate Instant Search Logic
+        // Accurate Number & Name Filter Logic
         function filterNames() {
             const query = document.getElementById('searchInput').value.trim().toLowerCase();
             if(!query) {
@@ -356,10 +361,12 @@
                 return;
             }
 
-            const filtered = nameList.filter(item => {
-                const isIdMatch = item.id.toString() === query;
-                const isTextMatch = item.text.toLowerCase().includes(query);
-                return isIdMatch || isTextMatch;
+            const supers = {'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};
+            let numQuery = query.split('').map(d => supers[d] || d).join('');
+
+            const filtered = nameList.filter((nameText, index) => {
+                const realNum = (index + 1).toString();
+                return realNum === query || nameText.includes(numQuery) || nameText.toLowerCase().includes(query);
             });
 
             renderGrid(filtered);
@@ -387,7 +394,7 @@
             if(!input) return;
             const vipName = convertToVipFont(input);
             copyText(vipName);
-            alert('আপনার VIP নাম তৈরি ও কপি করা হয়েছে:\n' + vipName);
+            alert('আপনার VIP নাম তৈরি ও কপি করা হয়েছে:\n' + vipName);
         }
 
         let clickCount = 0;
@@ -415,7 +422,7 @@
                 document.getElementById('editYouTube').value = settings.youtube;
                 document.getElementById('editFacebook').value = settings.facebook;
             } else {
-                alert('ভুল পাসওয়ার্ড!');
+                alert('ভুল পাসওয়ার্ড!');
             }
         }
 
@@ -442,7 +449,9 @@
 
         window.onload = () => {
             applySettings();
-            renderGrid(nameList);
+            if (typeof nameList !== 'undefined') {
+                renderGrid(nameList);
+            }
         };
     </script>
 </body>
