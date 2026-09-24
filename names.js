@@ -1,4 +1,4 @@
-// Dynamic 1000 VIP Name Generator Engine
+// Faster Array Object for Accurate ID Search & Better Performance
 const basePrefix = "ᴹᴿ〲ʟᴀʟᴀ";
 
 function toSuperscript(num) {
@@ -6,8 +6,10 @@ function toSuperscript(num) {
     return num.toString().split('').map(digit => supers[digit] || digit).join('');
 }
 
-// Generate Array from 1 to 1000
 const nameList = [];
 for (let i = 1; i <= 1000; i++) {
-    nameList.push(`${basePrefix}${toSuperscript(i)}`);
+    nameList.push({
+        id: i,
+        text: `${basePrefix}${toSuperscript(i)}`
+    });
 }
