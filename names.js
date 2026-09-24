@@ -1,4 +1,4 @@
-// Faster Array Object for Accurate ID Search & Better Performance
+// Pure 1000 VIP Name Generator Array
 const basePrefix = "ᴹᴿ〲ʟᴀʟᴀ";
 
 function toSuperscript(num) {
@@ -8,8 +8,5 @@ function toSuperscript(num) {
 
 const nameList = [];
 for (let i = 1; i <= 1000; i++) {
-    nameList.push({
-        id: i,
-        text: `${basePrefix}${toSuperscript(i)}`
-    });
+    nameList.push(`${basePrefix}${toSuperscript(i)}`);
 }
